@@ -151,9 +151,8 @@ public class ClubeController {
 
     @GetMapping("/pivo/bonus/{id}")
     public ResponseEntity exibeBonusPivo(@PathVariable int id) {
-        Double bonus = 0.0;
         if (listaPivos.size() >= id) {
-            return ResponseEntity.ok(listaPivos.get(id - 1).calcBonus());
+            return ResponseEntity.ok(listaPivos.get(id - 1).getBonus());
 
         } else {
             return ResponseEntity.notFound().build();
@@ -162,9 +161,8 @@ public class ClubeController {
 
     @GetMapping("/armador/bonus/{id}")
     public ResponseEntity exibeBonusArmador(@PathVariable int id) {
-        Double bonus = 0.0;
         if (listaArmadores.size() >= id) {
-            return ResponseEntity.ok(listaArmadores.get(id - 1).calcBonus());
+            return ResponseEntity.ok(listaArmadores.get(id - 1).getBonus());
 
         } else {
             return ResponseEntity.notFound().build();
@@ -173,13 +171,45 @@ public class ClubeController {
 
     @GetMapping("/ala/bonus/{id}")
     public ResponseEntity exibeBonusAla(@PathVariable int id) {
-        Double bonus = 0.0;
         if (listaAlas.size() >= id) {
-            return ResponseEntity.ok(listaAlas.get(id - 1).calcBonus());
+            return ResponseEntity.ok(listaAlas.get(id - 1).getBonus());
 
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/pivo/maior-rendimento")
+    public ResponseEntity exibeMaiorRendimentoPivo(){
+        Double maior = 0.0;
+        for(Pivo p : listaPivos){
+            if(p.calculaRendimento()>maior){
+                maior = p.getRendimento();
+            }
+        }
+        return ResponseEntity.ok(maior);
+    }
+
+    @GetMapping("/armador/maior-rendimento")
+    public ResponseEntity exibeMaiorRendimentoArmador(){
+        Double maior = 0.0;
+        for(Armador a : listaArmadores){
+            if(a.calculaRendimento()>maior){
+                maior = a.getRendimento();
+            }
+        }
+        return ResponseEntity.ok(maior);
+    }
+
+    @GetMapping("/ala/maior-rendimento")
+    public ResponseEntity exibeMaiorRendimentoAla(){
+        Double maior = 0.0;
+        for(Ala ala : listaAlas){
+            if(ala.calculaRendimento()>maior){
+                maior = ala.getRendimento();
+            }
+        }
+        return ResponseEntity.ok(maior);
     }
 
 }

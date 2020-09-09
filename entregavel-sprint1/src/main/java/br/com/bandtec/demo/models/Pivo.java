@@ -19,18 +19,18 @@ public class Pivo extends Jogador {
     public Double calculaRendimento() {
         Double total = 0.0;
         total = ((toco / faltas) * 100.0) + ((rebote / perdaPosseBola) * 100.0);
-        return total /2;
+        return total;
     }
 
     public Double calcBonus() {
         if(calculaRendimento() > 90.0){
-            setSalario(getSalario() * 1.5);
-
-        }else if(calculaRendimento() > 70.0){
             setSalario(getSalario() * 1.3);
 
+        }else if(calculaRendimento() > 70.0){
+            setSalario(getSalario() * 1.25);
+
         }else if(calculaRendimento() > 50.0){
-            setSalario(getSalario() * 1.1);
+            setSalario(getSalario() * 1.15);
         }
         return getSalario();
     }
@@ -75,5 +75,15 @@ public class Pivo extends Jogador {
         this.faltas = faltas;
     }
 
-
+    @Override
+    public String toString() {
+        return "Pivo{" +
+                "\nrebote=" + rebote +
+                "\n, perdaPosseBola=" + perdaPosseBola +
+                "\n, toco=" + toco +
+                "\n, faltas=" + faltas +
+                "\n, rendimento=" + getRendimento() +
+                "\n, bonus=" + getBonus() +
+                '}';
+    }
 }

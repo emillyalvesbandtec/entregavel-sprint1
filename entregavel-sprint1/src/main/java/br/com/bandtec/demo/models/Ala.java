@@ -18,13 +18,13 @@ public class Ala extends Jogador{
 
     public Double calcBonus() {
         if(calculaRendimento() > 90.0){
-            setSalario(getSalario() * 1.45);
+            setSalario(getSalario() * 1.25);
 
         }else if(calculaRendimento() > 70.0){
-            setSalario(getSalario() * 1.35);
+            setSalario(getSalario() * 1.15);
 
         }else if(calculaRendimento() > 50.0){
-            setSalario(getSalario() * 1.1);
+            setSalario(getSalario() * 1.06);
         }
         return getSalario();
     }

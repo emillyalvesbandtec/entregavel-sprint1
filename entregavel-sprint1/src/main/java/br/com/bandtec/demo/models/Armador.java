@@ -24,13 +24,13 @@ public class Armador extends Jogador{
 
     public Double calcBonus() {
         if(calculaRendimento() > 90.0){
-            setSalario(getSalario() * 1.45);
-
-        }else if(calculaRendimento() > 70.0){
             setSalario(getSalario() * 1.25);
 
+        }else if(calculaRendimento() > 70.0){
+            setSalario(getSalario() * 1.20);
+
         }else if(calculaRendimento() > 50.0){
-            setSalario(getSalario() * 1.15);
+            setSalario(getSalario() * 1.1);
         }
         return getSalario();
     }
